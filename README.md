@@ -1,3 +1,4 @@
+
 # Introduction
 This post covers a method to stand up a simple isolated  Kubernetes environment using Minikube with the --vm-driver=none option and Vagrant.  The --vm-driver option is used to specify which infrastructure provider minikube will use.  The default is virtualbox.  Virtualbox is generally fine except in cases where your environment (guest environment in this case) does not support nested virtualization.  This is where vm-driver=none provides a solution.  
 Here we are taking advantage of the --vm-driver=none to invoke the guest's VM local docker engine instead of one on a single node virtual box instance which is the default behavior, and using Vagrant to isolate a guest Kubernetes environment from the host.  Basically putting minikube on the guest VM rather than having minikube start a guest VM.  
