@@ -1,7 +1,7 @@
 
 # Introduction
-This post covers a method to stand up a simple isolated  Kubernetes environment using Minikube with the --vm-driver=none option and Vagrant.  The --vm-driver option is used to specify which infrastructure provider minikube will use.  The default is virtualbox.  Virtualbox is generally fine except in cases where your environment (guest environment in this case) does not support nested virtualization.  This is where vm-driver=none provides a solution.  
-Here we are taking advantage of the --vm-driver=none to invoke the guest's VM local docker engine instead of one on a single node virtual box instance which is the default behavior, and using Vagrant to isolate a guest Kubernetes environment from the host.  Basically putting minikube on the guest VM rather than having minikube start a guest VM.  
+This post covers a method to stand up a simple isolated  Kubernetes environment using Minikube with the --vm-driver=none option and Vagrant.  The --vm-driver option is used to specify which hypervisor minikube will use.  The default is virtualbox.  Virtualbox is generally fine except in cases where your environment (guest environment in this case) does not support nested virtualization.  This is where vm-driver=none provides a solution.  
+Here we are taking advantage of the --vm-driver=none to invoke the guest's VM local docker daemon instead of one on a single node virtual box instance which is the default behavior, and using Vagrant to isolate a guest Kubernetes environment from the host.  Basically putting minikube on the guest VM rather than having minikube start a guest VM.  
 
 ## Prerequisits
 An environment with Docker, Minikube, and Kubectl.  There is a Vagrantfile in the http://github.com/justsomedevnotes/Kubernetes-simple-development-box repository that contains the necessary binaries.
@@ -14,8 +14,7 @@ sudo minikube start --vm-driver=none
 ```
 Or use
 ```console
-cd /vagrant
-./minikube-start.sh
+cd /vagrant && ./minikube-start.sh
 ```
 
 ## Step 2: Test the Environment
