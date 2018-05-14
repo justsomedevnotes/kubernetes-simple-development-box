@@ -30,10 +30,10 @@ metadata:
 spec:
   containers:
   - image: nginx
-    name: nnginx
+    name: nnginx  
+```  
     
-    ```
-    
+    Use the pod.yaml to create a pod instance  
 ```console
 kubectl create -f pod.yaml
 ```
@@ -43,7 +43,7 @@ Verify the pod has a status of 'running' using the following command.
 kubectl get pods
 ```
 
-Assuming the nginx pod is running, capture the pod IP.  
+Assuming the justapod pod is running, capture the pod IP.  
 ```console
 export PODIP=$(kubectl get pod justapod -o json | jq -r .status.podIP)
 ```
